@@ -163,3 +163,51 @@ for test in tests:
          print('test:\n',locate_card_binary(**test['input']),'\n','expected:\n',test['output'])
 for test in tests:
     print(locate_card_linear(**test['input'])==test['output'])
+#test complixity..............................
+import time
+
+#python -m pip install -U matplotlib >>
+import pip
+# pip.main(["install","matplotlib"])
+import matplotlib.pyplot as plt
+def test_complixity():
+    
+    n=2
+    start0=time.time()
+    inputs=list()
+    durations=list()
+    for n in range(0,2000,1):
+        
+        if time.time()-start0>10.0:
+            
+            print('run time !')
+            break
+        start=time.time()
+        input_n=list(range(n,0,-1))
+        #function to be tested !!
+        locate_card_binary(input_n,50)
+        
+        
+        end=time.time()
+        duration=f'{(end-start):.12f}'
+        inputs.append(n)
+        durations.append(duration)
+        print(duration,n)
+    #     while True:
+    #         
+    plt.plot(inputs,durations)
+    plt.show()
+    print('done')
+test_complixity()
+
+    
+
+
+
+
+
+# plt.plot(time_n,list(input_n))
+# plt.show()
+# print(input_n)
+
+# print(time_n)
