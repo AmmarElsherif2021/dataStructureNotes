@@ -176,7 +176,7 @@ def test_complixity():
     start0=time.time()
     inputs=list()
     durations=list()
-    for n in range(0,2000,1):
+    for n in range(0,5000,1):
         
         if time.time()-start0>10.0:
             
@@ -185,17 +185,21 @@ def test_complixity():
         start=time.time()
         input_n=list(range(n,0,-1))
         #function to be tested !!
-        locate_card_binary(input_n,50)
+        locate_card_binary(input_n,n)
         
         
         end=time.time()
         duration=f'{(end-start):.12f}'
         inputs.append(n)
         durations.append(duration)
-        print(duration,n)
-    #     while True:
-    #         
+        #print(duration,n)
+    
+    plt.xlabel("No. of elements")
+    plt.ylabel("Time required")
     plt.plot(inputs,durations)
+    # f = plt.figure()
+    # f.set_figwidth(12)
+    # f.set_figheight(3)
     plt.show()
     print('done')
 test_complixity()
