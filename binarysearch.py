@@ -163,7 +163,7 @@ for test in tests:
          print('test:\n',locate_card_binary(**test['input']),'\n','expected:\n',test['output'])
 for test in tests:
     print(locate_card_linear(**test['input'])==test['output'])
-#test complixity..............................
+#test complixity..............................C:\Users\ahmed\Desktop\AmmarDataStructure\Python data struct. jovian\binarysearch.py
 import time
 
 #python -m pip install -U matplotlib >>
@@ -202,7 +202,7 @@ def test_complixity():
     # f.set_figheight(3)
     plt.show()
     print('done')
-test_complixity()
+# test_complixity()
 
     
 
@@ -215,3 +215,121 @@ test_complixity()
 # print(input_n)
 
 # print(time_n)
+#.............................................................................................
+# **Problem - Rotated Lists
+# We'll solve the following problem step-by-step:
+# You are given list of numbers, obtained by rotating a sorted list an unknown number of times. Write a function to determine the minimum number of times the original sorted list was rotated to obtain the given list. Your function should have the worst-case complexity of O(log N), where N is the length of the list. You can assume that all the numbers in the list are unique.
+# Example: The list [5, 6, 9, 0, 2, 3, 4] was obtained by rotating the sorted list [0, 2, 3, 4, 5, 6, 9] 3 times.
+# We define "rotating a list" as removing the last element of the list and adding it before the first element. E.g. rotating the list [3, 2, 4, 1] produces [1, 3, 2, 4].
+# "Sorted list" refers to a list where the elements are arranged in the increasing order e.g. [1, 3, 5, 7].**
+#-------------------------------------------------\
+#Boundries:
+#A list of size 10 rotated 3 times.
+# A list of size 8 rotated 5 times.
+# A list that wasn't rotated at all.
+# A list that was rotated just once.
+# A list that was rotated n-1 times, where n is the size of the list.
+# A list that was rotated n times (do you get back the original list here?)
+# An empty list.
+# A list containing just one element.
+#-------------------------------------------------\
+tests2=[]
+tests2.append( {
+    'input': {
+        'nums': [19, 25, 29, 3, 5, 6, 7, 9, 11, 14]
+    },
+    'output': 3
+})
+tests2.append({
+    'input': {
+        'nums': [4,5,6,7,8,1,2,3]
+    },
+    'output': 5
+})
+tests2.append({
+    'input': {
+        'nums': [1,2,3,4,77]
+    },
+    'output': 0
+})
+tests2.append({
+    'input': {
+        'nums': [10,1,3,4,6,7,9]
+    },
+    'output': 1
+})
+tests2.append({
+    'input': {
+        'nums': [2,3,4,6,7,90,1]
+    },
+    'output': 6
+})
+tests2.append({
+    'input': {
+        'nums': [1,2,3,4,5]
+    },
+    'output': 0
+})
+tests2.append({
+    'input': {
+        'nums': [9]
+    },
+    'output': 0
+})
+def count_rotations_linear(nums):
+    position = 0                 # What is the intial value of position?
+    
+    while position<len(nums):                     # When should the loop be terminated?
+        
+        # Success criteria: check whether the number at the current position is smaller than the one before it
+        if nums[position]<nums[position-1]:   # How to perform the check?
+            
+            return position
+        
+        # Move to the next position
+        position += 1
+        if position==len(nums):
+            return 0
+    
+    return -1  
+    print('Hollaaaaaaa')  
+#test the function logic
+i=0
+for test in tests2:
+    print(test['output']==count_rotations_linear(**test['input']),'\t',i)
+    i+=1
+#test the time complixty:
+
+def test_complixity2():
+    
+    n=2
+    start0=time.time()
+    inputs=list()
+    durations=list()
+    for n in range(0,15000,1):
+        
+        if time.time()-start0>10.0:
+            
+            print('run time !')
+            break
+        start=time.time()
+        input_n=list(range(0,n,1))+list(range(int(n-(n/2)),n,1))
+        #function to be tested !!
+        count_rotations_linear(input_n)
+        
+        
+        end=time.time()
+        duration=f'{(end-start):.12f}'
+        inputs.append(n)
+        durations.append(duration)
+        #print(duration,n)
+    
+    plt.xlabel("No. of elements")
+    plt.ylabel("Time required")
+    plt.plot(inputs,durations)
+    # f = plt.figure()
+    # f.set_figwidth(12)
+    # f.set_figheight(3)
+    plt.show()
+    print('done')
+test_complixity2()
