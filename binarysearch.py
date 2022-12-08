@@ -332,4 +332,30 @@ def test_complixity2():
     # f.set_figheight(3)
     plt.show()
     print('done')
-test_complixity2()
+# test_complixity2()
+#leeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet
+def containsDuplicate(nums):
+        start=time.time()
+        nums1=nums
+        while len(nums1)>1:
+            for num in nums1[1:] :
+                if nums1[0]==num:
+                    return True
+           
+            nums1=nums1[1:]
+        return False
+
+
+            
+
+        
+# strt=time.time()
+# arr=[1,2,3,4,5]
+# print(type(arr[1:]))
+print("-------------------------------")
+leet=containsDuplicate([1,2,3,4,5,6,1])
+containsDuplicate([1,2,3,4,5,6,8])
+print(leet)
+
+
+
